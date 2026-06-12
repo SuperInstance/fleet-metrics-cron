@@ -1,0 +1,11 @@
+/target
+**/*.rs.bk
+Cargo.lock
+*.swp
+*.swo
+*~
+.env
+.env.*
+node_modules/
+.wrangler/
+dist/

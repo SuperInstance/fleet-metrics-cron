@@ -1,0 +1,41 @@
+#: fleet-metrics-cron
+name = "fleet-metrics-cron"
+main = "src/worker.ts"
+compatibility_date = "2024-12-01"
+
+# ── Cron Trigger ──────────────────────────────────────────────────────────────
+[triggers]
+crons = ["*/5 * * * *"]
+
+# ── D1 Binding ────────────────────────────────────────────────────────────────
+# Requires: wrangler d1 create fleet-events
+[[d1_databases]]
+binding = "DB"
+database_name = "fleet-events"
+database_id = "0327d8a7-ae63-44d7-9f7e-d783751903b4"
+
+# ── KV Binding ────────────────────────────────────────────────────────────────
+# Requires: wrangler kv namespace create fleet-orchestrator-kv
+[[kv_namespaces]]
+binding = "KV"
+id = "f945c827d4ca439dbe0d19f5cfff26f3"
+
+# ── Monitored Workers ─────────────────────────────────────────────────────────
+# These are the 15 workers in the SuperInstance fleet that this cron aggregates.
+# Listed here for documentation; the actual list is in src/worker.ts.
+#
+# fleet-edge
+# fleet-vector-api
+# fleet-budget
+# fleet-event-router
+# fleet-health
+# fleet-orchestrator
+# fleet-escalation
+# fleet-balance
+# fleet-notify
+# fleet-digest
+# fleet-heartbeat
+# fleet-ingest
+# fleet-transform
+# fleet-metrics-cron
+# fleet-gateway

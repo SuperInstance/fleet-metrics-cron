@@ -1,0 +1,13 @@
+node_modules/
+target/
+.build/
+dist/*.map
+*.tgz
+.DS_Store
+.github/
+*.test.ts
+*.test.js
+*.spec.ts
+*.spec.js
+coverage/
+.cache/

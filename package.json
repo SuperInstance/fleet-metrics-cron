@@ -1,0 +1,20 @@
+{
+  "name": "fleet-metrics-cron",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Cloudflare Worker cron that aggregates fleet observability metrics from D1 into KV",
+  "main": "src/worker.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241205.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0",
+    "wrangler": "^3.99.0"
+  }
+}

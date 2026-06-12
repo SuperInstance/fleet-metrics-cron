@@ -1,0 +1,33 @@
+name: Worker CI
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: worker-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-dry-run:
+    name: Type-check & Dry-run
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Type-check
+        run: npx tsc --noEmit
+
+      - name: Dry-run deploy
+        run: npx wrangler deploy --dry-run
